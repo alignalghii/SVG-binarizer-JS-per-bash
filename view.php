@@ -8,7 +8,12 @@
 	</head>
 	<body>
 		<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="300" height="300">
-			<circle cx="50" cy="25" r="10"/>
+			<defs>
+				<pattern id="foam" width="5" height="5" patternUnits="userSpaceOnUse">
+					<image width="4.5" height="4.5" xlink:href="ball.jpeg"/><!-- Credit to https://stackoverflow.com/a/50304067 -->
+				</pattern>
+			</defs>
+			<circle cx="50" cy="25" r="10" fill="url(#foam)" stroke="black" stroke-width="2"/>
 			<image width="50" height="50" x="100" y="100" xlink:href="ball.jpeg"/>
 		</svg>
 		<button>Update JPG</button>
