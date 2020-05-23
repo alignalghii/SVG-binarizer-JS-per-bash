@@ -6,11 +6,13 @@ class Controller
 
 	public function ajax(string $postBody)
 	{
-		$svgFile = fopen('var.svg', 'w');
+		$stamp = time() . '-' . rand();
+		$extlessPath = "var/ball--$stamp";
+		$svgFile = fopen("$extlessPath.svg", 'w');
 			fwrite($svgFile, $postBody);
 		fclose($svgFile);
-		system('convert var.svg var.png');
-		header('Content-Type: text/plain');
-		echo json_encode(['downloadLink' => 'var.png']);
+		system("convert $extlessPath.svg $extlessPath.png");
+		header('Content-Type: application/json');
+		echo json_encode(['downloadLink' => "$extlessPath.png"]);
 	}
 }
